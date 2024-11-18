@@ -29,7 +29,6 @@ public class Login_Page {
 
     public void clickSubmit() {
         driver.findElement(submitButton).click();
-        
     }
 
 }

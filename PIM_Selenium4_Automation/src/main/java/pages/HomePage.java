@@ -11,38 +11,50 @@ public class HomePage {
 
 	private WebDriver driver;
 	private WebDriverWait wait;
-	
-	
-	private By searchButton = By.cssSelector("#app");
+
+	private By RootElement = By.cssSelector("#app");
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 	}
 
-	
-	 public WebElement waitForElementToBeClickable(WebElement elementtobewaited) {
-	        return wait.until(ExpectedConditions.elementToBeClickable(elementtobewaited));
-	    }
-	
-	public void clickSearchButton() {
-		WebElement searchBtn = driver.findElement(searchButton).getShadowRoot()
-				.findElement(By.cssSelector("[id^='rs']")).getShadowRoot().
+	public WebElement waitForElementToBeClickable(WebElement elementtobewaited) {
+		return wait.until(ExpectedConditions.elementToBeClickable(elementtobewaited));
+	}
+
+	public WebElement HomePage_SearchButton() {
+		WebElement searchBtn = driver.findElement(RootElement).getShadowRoot().
+				findElement(By.cssSelector("[id^='rs']")).getShadowRoot().
 				findElement(By.cssSelector("#navMenu")).getShadowRoot().
 				findElement(By.cssSelector("#pageMenuIcon_1"));
-		
-		 waitForElementToBeClickable(searchBtn); 
-		searchBtn.click();
+		return searchBtn;
 	}
-	
+
+
 	public void clickSearchButton2() throws InterruptedException {
-		WebElement searchBtn = driver.findElement(searchButton).getShadowRoot()
-				.findElement(By.cssSelector("[id^='rs']")).getShadowRoot().
+		WebElement searchBtn = driver.findElement(RootElement).getShadowRoot().
+				findElement(By.cssSelector("[id^='rs']")).getShadowRoot().
 				findElement(By.cssSelector("#navMenu")).getShadowRoot().
 				findElement(By.cssSelector("#pageMenuIcon_2 > a.menu-icon.page-title-icon"));
-		
-		waitForElementToBeClickable(searchBtn); 
-		Thread.sleep(3000);;
+
+		waitForElementToBeClickable(searchBtn);
+		Thread.sleep(3000);
 		searchBtn.click();
 	}
 }
+
+
+
+
+
+
+//public void clickSearchButton() {
+//	WebElement searchBtn = driver.findElement(RootElement).getShadowRoot().
+//			findElement(By.cssSelector("[id^='rs']")).getShadowRoot().
+//			findElement(By.cssSelector("#navMenu")).getShadowRoot().
+//			findElement(By.cssSelector("#pageMenuIcon_1"));
+//
+//	waitForElementToBeClickable(searchBtn);
+//	searchBtn.click();
+//}
