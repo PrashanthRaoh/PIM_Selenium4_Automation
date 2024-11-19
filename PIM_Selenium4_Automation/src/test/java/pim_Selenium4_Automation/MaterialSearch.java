@@ -7,12 +7,10 @@ import pages.HomePage;
 import pages.Login_Page;
 //import pages.SearchPage;
 import pages.SearchPage2;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import common_functions.Utils;
 
 public class MaterialSearch {
@@ -31,28 +29,15 @@ public class MaterialSearch {
 
 		loginPage.enterEmail("raoad@timken.com");
 		loginPage.clickSubmit();
-//		Thread.sleep(10000);
 
 		utils.waitForElement(homePage.HomePage_SearchButton(), "clickable");
 
 		homePage.clickSearchButton2();
-//		Thread.sleep(15000);
-
-//		WebElement gridRows = driver.findElement(By.cssSelector("#app")).getShadowRoot()
-//				.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
-//				.findElement(By.cssSelector("[id^='currentApp_search-thing_']")).getShadowRoot()
-//				.findElement(By.cssSelector("[id^='app-entity-discovery-component-']")).getShadowRoot()
-//				.findElement(By.cssSelector("#entitySearchDiscoveryGrid")).getShadowRoot()
-//				.findElement(By.cssSelector("#entitySearchGrid")).getShadowRoot()
-//				.findElement(By.cssSelector("#entityGrid")).getShadowRoot()
-//				.findElement(By.cssSelector("#pebbleGridContainer > pebble-grid")).getShadowRoot()
-//				.findElement(By.cssSelector("#grid")).getShadowRoot().findElement(By.cssSelector(
-//						"#lit-grid> div > div.ag-root-wrapper-body.ag-layout-normal.ag-focus-managed >div.ag-root.ag-unselectable.ag-layout-normal> div.ag-body-viewport.ag-layout-normal.ag-row-no-animation> div.ag-center-cols-clipper > div.ag-center-cols-viewport > div.ag-center-cols-container"));
-//		
+		searchPage.enterMaterialId("000000000100060");
 		
-		utils.waitForElement(searchPage.getGridRoot(), "clickable");
+		utils.waitForElement(searchPage.getgrid(), "clickable");
 		
-		List<WebElement> rows = searchPage.getGridRoot().findElements(By.cssSelector("[role='row']"));
+		List<WebElement> rows = searchPage.getgrid().findElements(By.cssSelector("[role='row']"));
 		System.out.println("Total row count is " + rows.size());
 		
 		for (int i = 1; i < rows.size(); i++) {
@@ -70,22 +55,13 @@ public class MaterialSearch {
 					" - applicationtypedescription is " + applicationtypedescription);
 		}
 		
-
-
-//		searchPage.enterMaterialId("000000000100060");
-//		Thread.sleep(15000);
-//
-//		
-
 		/*
-		 ========= Filter button on Search thing * domain screen ===== ============= ==========================
+		 ========= Filter button on Search thing * domain screen ===== ============= 
 		 */
 
-//		utils.waitForElement(searchPage.getSearchField(), "clickable");
-//
-//		searchPage.getFilterButton().click();
-////		utils.waitForElement(searchPage.Search_button_After_Filter(), "clickable");
-////		searchPage.Search_button_After_Filter().sendKeys("PIM");
+		searchPage.getFilterButton().click();
+		utils.waitForElement(searchPage.Search_button_After_Filter(), "clickable");
+		searchPage.Search_button_After_Filter().sendKeys("PIM");
 //
 ////		Thread.sleep(5000);
 ////		
@@ -114,9 +90,32 @@ public class MaterialSearch {
 
 		driver.quit();
 	}
-
 }
 
+	/*
+		========     End ==============
+	*/	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //WebElement gridContainer = driver.findElement(By.cssSelector("#app")).getShadowRoot()
 //.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
 //.findElement(By.cssSelector("[id^='currentApp_search-thing_']")).getShadowRoot()
@@ -153,3 +152,15 @@ public class MaterialSearch {
 //	 WebElement materialIdCell =  row.findElement(By.cssSelector(".ag-row .ag-cell.div:nth-child('+ i +')"));
 //	 System.out.println("Material ID for row " + (i + 1) + ": " + materialIdCell.getText().trim());
 //}
+
+
+//WebElement gridRows = driver.findElement(By.cssSelector("#app")).getShadowRoot()
+//.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
+//.findElement(By.cssSelector("[id^='currentApp_search-thing_']")).getShadowRoot()
+//.findElement(By.cssSelector("[id^='app-entity-discovery-component-']")).getShadowRoot()
+//.findElement(By.cssSelector("#entitySearchDiscoveryGrid")).getShadowRoot()
+//.findElement(By.cssSelector("#entitySearchGrid")).getShadowRoot()
+//.findElement(By.cssSelector("#entityGrid")).getShadowRoot()
+//.findElement(By.cssSelector("#pebbleGridContainer > pebble-grid")).getShadowRoot()
+//.findElement(By.cssSelector("#grid")).getShadowRoot().findElement(By.cssSelector(
+//		"#lit-grid> div > div.ag-root-wrapper-body.ag-layout-normal.ag-focus-managed >div.ag-root.ag-unselectable.ag-layout-normal> div.ag-body-viewport.ag-layout-normal.ag-row-no-animation> div.ag-center-cols-clipper > div.ag-center-cols-viewport > div.ag-center-cols-container"));
