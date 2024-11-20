@@ -2,7 +2,6 @@ package pim_Selenium4_Automation;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import pages.HomePage;
 import pages.Login_Page;
 //import pages.SearchPage;
@@ -11,6 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
 import common_functions.Utils;
 
 public class MaterialSearch {
@@ -23,6 +24,10 @@ public class MaterialSearch {
 
 		driver.get("https://timkenfs.riversand.com/home");
 
+		/***********************************************
+		 *               ------- Login ---------       *
+		 * This section handles user login functionality. *
+		 ***********************************************/
 		Login_Page loginPage = new Login_Page(driver);
 		HomePage homePage = new HomePage(driver);
 		SearchPage2 searchPage = new SearchPage2(driver);
@@ -32,36 +37,79 @@ public class MaterialSearch {
 
 		utils.waitForElement(homePage.HomePage_SearchButton(), "clickable");
 
-		homePage.clickSearchButton2();
-		searchPage.enterMaterialId("000000000100060");
-		
-		utils.waitForElement(searchPage.getgrid(), "clickable");
-		
-		List<WebElement> rows = searchPage.getgrid().findElements(By.cssSelector("[role='row']"));
-		System.out.println("Total row count is " + rows.size());
-		
-		for (int i = 1; i < rows.size(); i++) {
-			WebElement RowByRow = rows.get(i);
-			String SellableMaterialDescription = RowByRow.findElement(By.cssSelector("div[col-id='sellablematerialdescription']")).getText();
-			String matid = RowByRow.findElement(By.cssSelector("div[col-id='sellablematerialid']")).getText();
-			String marketpartnumber = RowByRow.findElement(By.cssSelector("div[col-id='marketpartnumber']")).getText();
-			String pimattributetaxonomy = RowByRow.findElement(By.cssSelector("div[col-id='pimattributetaxonomy']")).getText();
-			String applicationtypedescription = RowByRow.findElement(By.cssSelector("div[col-id='applicationtypedescription']")).getText();
-			System.out.println(i + 
-					" :- SellableMaterialDescription is " + SellableMaterialDescription +
-					" - mat id is " + matid +
-					" - marketpartnumber is " + marketpartnumber +
-					" - pimattributetaxonomy is " + pimattributetaxonomy + 
-					" - applicationtypedescription is " + applicationtypedescription);
+		/************************************************
+		 *    ------- Tab Click on Home Screen --------  *
+		 * This section handles the action when a user  clicks on a tab in the home screen dashboard. *
+		 ************************************************/
+//		homePage.Select_Tab_By_Name("favourites");
+//		Thread.sleep(5000);
+//		homePage.Select_Tab_By_Name("my-searches");
+//		Thread.sleep(5000);
+//		homePage.Select_Tab_By_Name("shared-searches");
+//		Thread.sleep(5000);
+
+		/************************************************
+		 *    -------Select dropdown menu items --------  *
+		 * This section handles the action when a user  clicks on a tab in the home screen dashboard. *
+		 ************************************************/
+		homePage.EntityDataImports_DropDown_Object().click();
+		Thread.sleep(3000);
+				
+		List<WebElement> allmenuItems = homePage.EntityDataImports_DropDown_Object().getShadowRoot().findElements(By.cssSelector(".list"));
+		for (int i = 0; i < allmenuItems.size(); i++) {
+			WebElement eachmenuitem = allmenuItems.get(i);
+			System.out.println(i + ":- " + eachmenuitem.getText());
 		}
-		
+
+		/************************************************
+		 *    ------- Search button click ---------  *
+		 * This section handles the action when a user  selects drop down list. *
+		 ************************************************/
+
+//		utils.waitForElement(homePage.HomePage_SearchButton(), "clickable");
+
+//		homePage.clickSearchButton2();
+		/************************************************
+		 *    -------Enter Material ID- ---------  *
+		 ************************************************/
+//		searchPage.enterMaterialId("000000000100060");
+//
+//		utils.waitForElement(searchPage.getgrid(), "clickable");
+
+		/************************************************
+		 *    ------- Get Row count ---------  *
+		 ************************************************/
+//		List<WebElement> rows = searchPage.getgrid().findElements(By.cssSelector("[role='row']"));
+//		System.out.println("Total row count is " + rows.size());
+//
+//		Actions actions = new Actions(driver);
+//
+//		for (int i = 1; i < rows.size(); i++) {
+//			WebElement RowByRow = rows.get(i);
+//			String SellableMaterialDescription = RowByRow.findElement(By.cssSelector("div[col-id='sellablematerialdescription']")).getText();
+//			String matid = RowByRow.findElement(By.cssSelector("div[col-id='sellablematerialid']")).getText();
+//			Thread.sleep(1000);
+//			actions.moveToElement(RowByRow).build().perform();
+//			Thread.sleep(1000);
+//			String marketpartnumber = RowByRow.findElement(By.cssSelector("div[col-id='marketpartnumber']")).getText();
+//			String pimattributetaxonomy = RowByRow.findElement(By.cssSelector("div[col-id='pimattributetaxonomy']"))
+//					.getText();
+//			String applicationtypedescription = RowByRow.findElement(By.cssSelector("div[col-id='applicationtypedescription']")).getText();
+//			System.out.println(i 
+//					+ " :- SellableMaterialDescription is " + SellableMaterialDescription 
+//					+ " - mat id is " + matid 
+//					+ " - marketpartnumber is " + marketpartnumber 
+//					+ " - pimattributetaxonomy is "+ pimattributetaxonomy 
+//					+ " - applicationtypedescription is " + applicationtypedescription);
+//		}
+
 		/*
-		 ========= Filter button on Search thing * domain screen ===== ============= 
+		 * ========= Filter button on Search thing * domain screen ===== =============
 		 */
 
-		searchPage.getFilterButton().click();
-		utils.waitForElement(searchPage.Search_button_After_Filter(), "clickable");
-		searchPage.Search_button_After_Filter().sendKeys("PIM");
+//		searchPage.getFilterButton().click();
+//		utils.waitForElement(searchPage.Search_button_After_Filter(), "clickable");
+//		searchPage.Search_button_After_Filter().sendKeys("PIM");
 //
 ////		Thread.sleep(5000);
 ////		
@@ -92,30 +140,10 @@ public class MaterialSearch {
 	}
 }
 
-	/*
-		========     End ==============
-	*/	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+/*
+ * ======== End ==============
+ */
+
 //WebElement gridContainer = driver.findElement(By.cssSelector("#app")).getShadowRoot()
 //.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
 //.findElement(By.cssSelector("[id^='currentApp_search-thing_']")).getShadowRoot()
@@ -126,7 +154,6 @@ public class MaterialSearch {
 //.findElement(By.cssSelector("#pebbleGridContainer > pebble-grid")).getShadowRoot()
 //.findElement(By.cssSelector("#grid")).getShadowRoot().findElement(By.cssSelector(
 //		"#lit-grid> div > div.ag-root-wrapper-body.ag-layout-normal.ag-focus-managed> div.ag-root.ag-unselectable.ag-layout-normal> div.ag-body-viewport.ag-layout-normal.ag-row-no-animation> div.ag-center-cols-clipper > div.ag-center-cols-viewport > div.ag-center-cols-container> div[role] > div[col-id='sellablematerialid']"));
-
 
 //int rowcount = searchPage.getRowCount();
 //System.out.println("There are " + rowcount + " for the rows searched");
@@ -152,7 +179,6 @@ public class MaterialSearch {
 //	 WebElement materialIdCell =  row.findElement(By.cssSelector(".ag-row .ag-cell.div:nth-child('+ i +')"));
 //	 System.out.println("Material ID for row " + (i + 1) + ": " + materialIdCell.getText().trim());
 //}
-
 
 //WebElement gridRows = driver.findElement(By.cssSelector("#app")).getShadowRoot()
 //.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
