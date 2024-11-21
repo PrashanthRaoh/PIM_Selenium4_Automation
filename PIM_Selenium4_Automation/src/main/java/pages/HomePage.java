@@ -77,6 +77,38 @@ public class HomePage {
 				return EntityDataImports_Dropdown;
 	}
 	
+	public WebElement Status_DropDown_Object() throws InterruptedException {
+		WebElement Status_Dropdown = driver.findElement(By.cssSelector("#app")).getShadowRoot()
+				.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='currentApp_home_']")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='app-dashboard-component-']")).getShadowRoot()
+				.findElement(By.cssSelector("rock-layout > rock-dashboard-widgets")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='rs']")).getShadowRoot()
+				.findElement(By.cssSelector("#rock-task-list")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='rock-task-list-component-']")).getShadowRoot()
+				.findElement(By.cssSelector("div > div.base-grid-structure-child-1 > div > div.row-1.flex-container-row-1 > div.item.task-status > pebble-dropdown"));
+		
+		return Status_Dropdown;
+	}
+	
+	
+	public WebElement From_Last_DropDown_Object() throws InterruptedException {
+		WebElement From_Last_Dropdown = driver.findElement(By.cssSelector("#app")).getShadowRoot()
+				.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='currentApp_home_']")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='app-dashboard-component-']")).getShadowRoot()
+				.findElement(By.cssSelector("rock-layout > rock-dashboard-widgets")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='rs']")).getShadowRoot()
+				.findElement(By.cssSelector("#rock-task-list")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='rock-task-list-component-']")).getShadowRoot()
+				.findElement(By.cssSelector("div > div.base-grid-structure-child-1 > div > div.row-1.flex-container-row-1 > div.item.task-from-last > pebble-dropdown"));
+				
+		
+		return From_Last_Dropdown;
+	}
+	
+	
+	
 //	public WebElement ClickOnEntityDataimports_Dropdown() throws InterruptedException {
 //		WebElement EntityDataImports_Dropdown_TextBox = EntityDataImports_DropDown_Object().getShadowRoot()
 //				.findElement(By.cssSelector("#dropdown")).getShadowRoot()

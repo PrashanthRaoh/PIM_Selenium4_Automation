@@ -50,30 +50,52 @@ public class MaterialSearch {
 
 		/************************************************
 		 *    -------Select dropdown menu items --------  *
-		 * This section handles the action when a user  clicks on a tab in the home screen dashboard. *
+		 * This section handles the action when a user  clicks on a tab in the home screen Drop down menu item. *
 		 ************************************************/
-		homePage.EntityDataImports_DropDown_Object().click();
-		Thread.sleep(3000);
-				
-		List<WebElement> allmenuItems = homePage.EntityDataImports_DropDown_Object().getShadowRoot().findElements(By.cssSelector(".list"));
-		for (int i = 0; i < allmenuItems.size(); i++) {
-			WebElement eachmenuitem = allmenuItems.get(i);
-			System.out.println(i + ":- " + eachmenuitem.getText());
-		}
-
+//		homePage.EntityDataImports_DropDown_Object().click();
+//		Thread.sleep(3000);
+//				
+//		List<WebElement> EntityDataImportsmenuItems = homePage.EntityDataImports_DropDown_Object().getShadowRoot().findElements(By.cssSelector(".list"));
+//		for (int i = 0; i < EntityDataImportsmenuItems.size(); i++) {
+//			WebElement eachmenuitem = EntityDataImportsmenuItems.get(i);
+//			System.out.println(i + ":- " + eachmenuitem.getText());
+//		}
+//
+//		String EntityDataImportsMenuItem = "Bulk Entity Delete";
+//		 homePage.EntityDataImports_DropDown_Object().getShadowRoot().findElement(By.cssSelector("[title='" + EntityDataImportsMenuItem + "']")).click();
+//		 Thread.sleep(3000);
+		
+//		 Status drop down selection
+//		homePage.Status_DropDown_Object().click();
+//		List<WebElement> StatusmenuItems = homePage.Status_DropDown_Object().getShadowRoot().findElements(By.cssSelector(".list"));
+//		for (int i = 0; i < StatusmenuItems.size(); i++) {
+//			WebElement eachmenuitem = StatusmenuItems.get(i);
+//			System.out.println(i + ":- " + eachmenuitem.getText());
+//		}
+		
+//		From_Last_DropDown selection
+//		String lastdropdownvalue = "60 Days";
+//		homePage.From_Last_DropDown_Object().click();
+//		Thread.sleep(2000);
+////		List<WebElement> FromLastmenuItems = homePage.From_Last_DropDown_Object().getShadowRoot().findElements(By.cssSelector(".list"));
+////		
+////		for (int i = 0; i < FromLastmenuItems.size(); i++) {
+////			WebElement eachmenuitem = FromLastmenuItems.get(i);
+////			System.out.println(i + ":- " + eachmenuitem.getText());
+////		}
+//		homePage.From_Last_DropDown_Object().getShadowRoot().findElement(By.cssSelector("[title='" + lastdropdownvalue + "']")).click();
+		 
 		/************************************************
 		 *    ------- Search button click ---------  *
 		 * This section handles the action when a user  selects drop down list. *
 		 ************************************************/
 
 //		utils.waitForElement(homePage.HomePage_SearchButton(), "clickable");
-
 //		homePage.clickSearchButton2();
 		/************************************************
 		 *    -------Enter Material ID- ---------  *
 		 ************************************************/
 //		searchPage.enterMaterialId("000000000100060");
-//
 //		utils.waitForElement(searchPage.getgrid(), "clickable");
 
 		/************************************************
@@ -106,7 +128,6 @@ public class MaterialSearch {
 		/*
 		 * ========= Filter button on Search thing * domain screen ===== =============
 		 */
-
 //		searchPage.getFilterButton().click();
 //		utils.waitForElement(searchPage.Search_button_After_Filter(), "clickable");
 //		searchPage.Search_button_After_Filter().sendKeys("PIM");
@@ -136,7 +157,7 @@ public class MaterialSearch {
 //////        System.out.println("There are " + filterallresults.size() + " elements when searched with PIM");
 //////        Thread.sleep(4000);
 
-		driver.quit();
+//		driver.quit();
 	}
 }
 
