@@ -11,6 +11,7 @@ public class times {
 		SimpleDateFormat SIMPDFORMAT = new SimpleDateFormat("ddMMYY_HHmm");
 		String date =  SIMPDFORMAT.format(today);
 		System.out.println(date);
+		System.out.println();
 	}
 
 }

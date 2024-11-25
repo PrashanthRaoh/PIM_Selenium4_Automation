@@ -1,5 +1,6 @@
 package pim_Selenium4_Automation;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import pages.HomePage;
@@ -11,19 +12,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.BeforeTest;
 
+import common_functions.BaseTest;
 import common_functions.Utils;
 
-public class MaterialSearch {
+public class MaterialSearch extends BaseTest {
 
-	public static void main(String[] args) throws InterruptedException {
-		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(90));
-		driver.manage().window().maximize();
-		Utils utils = new Utils(driver);
-
-		driver.get("https://timkenfs.riversand.com/home");
-
+	public static void main(String[] args) throws InterruptedException, IOException {
+//		WebDriver driver = new ChromeDriver();
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(90));
+//		driver.manage().window().maximize();
+//		Utils utils = new Utils(driver);
 		/***********************************************
 		 *               ------- Login ---------       *
 		 * This section handles user login functionality. *
@@ -32,11 +32,16 @@ public class MaterialSearch {
 		HomePage homePage = new HomePage(driver);
 		SearchPage2 searchPage = new SearchPage2(driver);
 
+		loginPage.LaunchSite();
 		loginPage.enterEmail("raoad@timken.com");
 		loginPage.clickSubmit();
 
 		utils.waitForElement(homePage.HomePage_SearchButton(), "clickable");
+		
+		
+		utils.Takescreenshot();
 
+		
 		/************************************************
 		 *    ------- Tab Click on Home Screen --------  *
 		 * This section handles the action when a user  clicks on a tab in the home screen dashboard. *
@@ -95,15 +100,15 @@ public class MaterialSearch {
 		/************************************************
 		 *    -------Enter Material ID- ---------  *
 		 ************************************************/
-//		searchPage.enterMaterialId("000000000100060");
 //		utils.waitForElement(searchPage.getgrid(), "clickable");
+//		searchPage.enterMaterialId("000000000100126481");
 
 		/************************************************
 		 *    ------- Get Row count ---------  *
 		 ************************************************/
 //		List<WebElement> rows = searchPage.getgrid().findElements(By.cssSelector("[role='row']"));
 //		System.out.println("Total row count is " + rows.size());
-//
+////
 //		Actions actions = new Actions(driver);
 //
 //		for (int i = 1; i < rows.size(); i++) {
@@ -145,18 +150,22 @@ public class MaterialSearch {
 //				.findElement(By.cssSelector("#input"));
 //		
 //		utils.waitForElement(afterfilter, "clickable");
-////
 ////		afterfilter.sendKeys("PIM");
-////
 ////		utils.waitForElement(searchPage.getGridRoot(), "visible");
-////
 ////		List<WebElement> filterallresults = searchPage.Filter_Results().findElements(By.cssSelector("div > div > div"));
-////
 ////		System.out.println("Elements visible" + filterallresults.size());
-////
 //////        System.out.println("There are " + filterallresults.size() + " elements when searched with PIM");
 //////        Thread.sleep(4000);
 
+		/*
+		 * Material Details tab to click on drop down
+		 */
+//		WebElement RowByRow = rows.get(0);
+//		WebElement matid = RowByRow.findElement(By.cssSelector("div[col-id='sellablematerialid']"));
+//		actions.moveToElement(RowByRow).build().perform();
+//		Thread.sleep(2000);
+//		matid.click();
+		
 //		driver.quit();
 	}
 }
