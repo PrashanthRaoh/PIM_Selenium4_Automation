@@ -19,8 +19,9 @@ public class Login_Page  {
     public Utils utils;
     public HomePage homePage;
     
-    private By emailField = By.cssSelector("[type='email']");
-    private By submitButton = By.cssSelector("[type='submit']");
+    private By emailField = By.cssSelector("[id='username']");
+    private By passwordfield = By.cssSelector("[id='password']");
+    private By Submitbutton = By.xpath("(//button[@type=\"submit\"])[2]");
     
     public Login_Page(WebDriver driver) {
         this.driver = driver;
@@ -33,18 +34,25 @@ public class Login_Page  {
         WebElement emailElement = wait.until(ExpectedConditions.elementToBeClickable(emailField));
         emailElement.sendKeys(email);
     }
+    public void enterPassword(String password) {
+    	WebElement emailElement = wait.until(ExpectedConditions.elementToBeClickable(passwordfield));
+    	emailElement.sendKeys(password);
+    }
 	
 	public void LaunchSite() {
-		driver.get("https://timkenfs.riversand.com/home");
+//		driver.get("https://timkenfs.riversand.com/home");
+		driver.get("https://timkenfs.syndigo.com/?idp=timkenfs_auth0_go");
 	}
 	
     public void clickSubmit() {
-        driver.findElement(submitButton).click();
+        driver.findElement(Submitbutton).click();
     }
 	
 	public void LogintoPIM() throws IOException {
 		LaunchSite();
-		enterEmail("raoad@timken.com");
+//		enterEmail("raoad@timken.com");
+		enterEmail("systemadmin.test1@timken.com");
+		enterPassword("PivotreeTmkSys@24$");
 		clickSubmit();
 		utils.waitForElement(homePage.HomePage_SearchButton(), "clickable");
 		utils.Takescreenshot();

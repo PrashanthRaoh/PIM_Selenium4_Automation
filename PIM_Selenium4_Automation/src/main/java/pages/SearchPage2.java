@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SearchPage2 {
+public class SearchPage2  {
 	private WebDriver driver;
 	private WebDriverWait wait;
 
@@ -23,21 +23,23 @@ public class SearchPage2 {
 	}
 
 	public WebElement getSearchField() {
-		return driver.findElement(searchInputField).getShadowRoot().findElement(By.cssSelector("#contentViewManager"))
-				.getShadowRoot().findElement(By.cssSelector("[id^='currentApp_search-thing_']")).getShadowRoot()
+		return driver.findElement(searchInputField).getShadowRoot()
+				.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='currentApp_search-thing_']")).getShadowRoot()
 				.findElement(By.cssSelector("[id^='app-entity-discovery-component-']")).getShadowRoot()
 				.findElement(By.cssSelector("#entitySearchDiscoveryGrid")).getShadowRoot()
 				.findElement(By.cssSelector("#searchBar")).getShadowRoot().findElement(By.cssSelector("#input"));
 	}
 
 	public WebElement getFilterButton() {
-		return driver.findElement(searchInputField).getShadowRoot().findElement(By.cssSelector("#contentViewManager"))
-				.getShadowRoot().findElement(By.cssSelector("[id^='currentApp_search-thing_']")).getShadowRoot()
+		return driver.findElement(searchInputField).getShadowRoot()
+				.findElement(By.cssSelector("#contentViewManager")).getShadowRoot()
+				.findElement(By.cssSelector("[id^='currentApp_search-thing_']")).getShadowRoot()
 				.findElement(By.cssSelector("[id^='app-entity-discovery-component-']")).getShadowRoot()
 				.findElement(By.cssSelector("#entitySearchDiscoveryGrid")).getShadowRoot()
 				.findElement(By.cssSelector("#entitySearchFilter")).getShadowRoot()
-				.findElement(By.cssSelector("#search-filter")).getShadowRoot().findElement(filterButtonLocator)
-				.getShadowRoot().findElement(By.cssSelector("#buttonTextBox"));
+				.findElement(By.cssSelector("#search-filter")).getShadowRoot()
+				.findElement(filterButtonLocator).getShadowRoot().findElement(By.cssSelector("#buttonTextBox"));
 	}
 
 	public WebElement Search_button_After_Filter() {
@@ -79,6 +81,7 @@ public class SearchPage2 {
 	public void enterMaterialId(String materialId) {
 		WebElement searchField = getSearchField();
 		wait.until(ExpectedConditions.elementToBeClickable(searchField));
+		
 		searchField.sendKeys(materialId);
 		searchField.sendKeys(Keys.ENTER);
 	}

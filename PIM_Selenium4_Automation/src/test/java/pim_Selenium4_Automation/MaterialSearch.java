@@ -38,20 +38,25 @@ public class MaterialSearch extends BaseTest {
 
 		utils.waitForElement(homePage.HomePage_SearchButton(), "clickable");
 		
+//		/************************************************
+//		 *    -------  Tab Click on Home Screen on To DOs Dashboard--------  *
+//		 * This section handles the action when a user  clicks on a tab in To DOs dashboard tab in the home screen . *
+//		 ************************************************/
+//		
+//		String tabname = "Marketing Enrichment";
+//		homePage.SelectTab_ByName_ToDos_Tab(tabname);
+//		Thread.sleep(3000);
 		
-		utils.Takescreenshot();
-
-		
-		/************************************************
-		 *    ------- Tab Click on Home Screen --------  *
-		 * This section handles the action when a user  clicks on a tab in the home screen dashboard. *
-		 ************************************************/
-//		homePage.Select_Tab_By_Name("favourites");
-//		Thread.sleep(5000);
-//		homePage.Select_Tab_By_Name("my-searches");
-//		Thread.sleep(5000);
-//		homePage.Select_Tab_By_Name("shared-searches");
-//		Thread.sleep(5000);
+//		/************************************************
+//		 *    ------- Tab Click on Home Screen --------  *
+//		 * This section handles the action when a user  clicks on a tab in the home screen dashboard. *
+//		 ************************************************/
+////		homePage.Select_Tab_By_Name("favourites");
+////		Thread.sleep(5000);
+////		homePage.Select_Tab_By_Name("my-searches");
+////		Thread.sleep(5000);
+////		homePage.Select_Tab_By_Name("shared-searches");
+////		Thread.sleep(5000);
 
 		/************************************************
 		 *    -------Select dropdown menu items --------  *
@@ -100,8 +105,8 @@ public class MaterialSearch extends BaseTest {
 		/************************************************
 		 *    -------Enter Material ID- ---------  *
 		 ************************************************/
-//		utils.waitForElement(searchPage.getgrid(), "clickable");
-//		searchPage.enterMaterialId("000000000100126481");
+		utils.waitForElement(searchPage.getgrid(), "clickable");
+		searchPage.enterMaterialId("000000000100126481");
 
 		/************************************************
 		 *    ------- Get Row count ---------  *
